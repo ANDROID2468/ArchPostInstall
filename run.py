@@ -16,18 +16,20 @@ os.system('yay -Sy')
 
 # X window system
 print("choose an x window system: ")
-print("   1. Xwayland")
+print("   1. wayland")
 print("   2. Xorg")
 print("   3. none")
 xWindow=int(input("?: "))
 if xWindow == 1:
-    print("Installing Xwayland...")
+    print("Installing wayland...")
+    os.system('yay -S wayland wayland-protocols mesa')
 elif xWindow == 2:
     print("Installing Xorg")
+    os.system('yay -S xorg xorg-server mesa')
 elif xWindow == 3:
     print("X window system not installed, continuing...")
 else:
-    print("invalid input, continuing...")
+    print("Invalid input, continuing...")
 
 # DE install
 print("choose a desktop environment: ")
@@ -35,9 +37,19 @@ print("Please enter one of the following options: ")
 print("   1. gnome")
 print("   2. kde")
 print("   3. none")
-
 dE = int(input("?: "))
-
+if dE == 1:
+    print("installing gnome...")
+    os.system('yay -S gnome gnome-extra gdm')
+    os.system('sudo systemctl enable gdm.service')
+elif dE == 2:
+    print("Installing kde...")
+    os.system('yay -S plasma sddm')
+    os.system('sudo systemctl enable sddm.service')
+elif dE == 3:
+    print("No DE installed, continuing...")
+else:
+    print("Invalid input, continuing...")
 # other app installs
 os.system('yay -S waterfox-classic-bin pycharm-community-edition minecraft-launcher xournal')
 
@@ -50,5 +62,10 @@ if touch == "y" or touch == "Y":
     print("")
 else:
     print("")
+update = input("Do you want to update your system?[Y/n]: ")
+if update == "n" or update == "N":
+    print("")
+else:
+    os.system('yay -Syu')
 
 print("Done!")
