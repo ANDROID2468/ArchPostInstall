@@ -36,7 +36,7 @@ print("   1. gnome")
 print("   2. kde")
 print("   3. none")
 
-dE=int(input("?: "))
+dE = int(input("?: "))
 
 # other app installs
 os.system('yay -S waterfox-classic-bin pycharm-community-edition minecraft-launcher xournal')
