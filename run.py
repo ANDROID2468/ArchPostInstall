@@ -36,7 +36,9 @@ print("choose a desktop environment: ")
 print("Please enter one of the following options: ")
 print("   1. gnome")
 print("   2. kde")
-print("   3. none")
+print("   3. cinnamon")
+print("   4. deepin")
+print("   5. none")
 dE = int(input("?: "))
 if dE == 1:
     print("installing gnome...")
@@ -47,11 +49,21 @@ elif dE == 2:
     os.system('yay -S plasma sddm')
     os.system('sudo systemctl enable sddm.service')
 elif dE == 3:
+    print("Installing cinnamon...")
+    os.system('yay -S cinnamon nemo-fileroller  yay -S lightdm')
+    os.system('sudo systemctl enable lightdm.service')
+elif dE == 4:
+    print("Installing Deepin...")
+    os.system('yay -S deepin deepin-extra lightdm')
+    os.system('sudo systemctl enable lightdm.service')
+elif dE == 5:
     print("No DE installed, continuing...")
 else:
     print("Invalid input, continuing...")
+
 # other app installs
-os.system('yay -S waterfox-classic-bin pycharm-community-edition minecraft-launcher xournal')
+os.system('yay -S waterfox-classic-bin pycharm-community-edition minecraft-launcher xournal discord gnome-disk-utility
+ ')
 
 # touch fix
 touch = input("Do you have a touchscreen that stops working after exiting sleep mode? [y/N]: ")
@@ -62,6 +74,8 @@ if touch == "y" or touch == "Y":
     print("")
 else:
     print("")
+
+# Update system
 update = input("Do you want to update your system?[Y/n]: ")
 if update == "n" or update == "N":
     print("")
